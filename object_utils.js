@@ -1,10 +1,10 @@
-function inherit(p){
+exports.inherit=function(p){
     if(p==null) return TypeError();
-    if(Object.create()){
+    if(Object.create){
         return Object.create(p);
     }
     var t=typeof p;
-    if(t!=="object"&&p!=="function") return TypeError;
+    if(t!=="object"&&t!=="function") return TypeError;
     function f(){};
     f.prototype=p;
     return new f();
