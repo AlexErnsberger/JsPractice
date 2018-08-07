@@ -52,3 +52,25 @@ whenReady(function(){
 
     }
 })
+
+function forceToUpperCase(element){
+    if(typeof element=="string"){
+        element=element.getElementById(element);
+    }
+    element.oninput=upcase;
+
+}
+
+function upcase(event){
+    this.value=this.value.toUpperCase();
+}
+
+function upcaseOnPropertyChange(event){
+    var e=event||window.event;
+    if(e.propertyName==="value"){
+        this.onpropertychange=null;
+        this.value=this.value.toUpperCase();
+        this.onpropertychange=upcaseOnPropertyChange;
+    }
+}
+
